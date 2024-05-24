@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-from torch.autograd.gradcheck import zero_gradients
+#from torch.autograd.gradcheck import zero_gradients
 from tqdm import tqdm
 
 import os
@@ -21,6 +21,12 @@ torch.set_default_dtype(torch.float64)
 
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #torch.set_default_device(device)
+
+def zero_gradients(parameters):
+    for p in parameters:
+        if p.grad is not None:
+            p.grad.detach_()
+            p.grad.zero_()
 
 class Trainer(metaclass=ABCMeta):
     def __init__(self, args, model, train_loader, val_loader, stats, export_root):
