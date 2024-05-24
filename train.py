@@ -66,7 +66,11 @@ def fix_random_seed_as(random_seed):
     np.random.seed(random_seed)
     
 
-torch.set_default_tensor_type(torch.DoubleTensor)
+#torch.set_default_tensor_type(torch.DoubleTensor)
+torch.set_default_dtype(torch.float64)
+
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#torch.set_default_device(device)
 parser = argparse.ArgumentParser()
 parser.add_argument('--seed', type=int, default=12345)
 parser.add_argument('--dataset_code', type=str,

@@ -4,7 +4,11 @@ import torch
 import torch.utils.data as data_utils
 
 
-torch.set_default_tensor_type(torch.DoubleTensor)
+#torch.set_default_tensor_type(torch.DoubleTensor)
+torch.set_default_dtype(torch.float64)
+
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#torch.set_default_device(device)
 
 
 class NILMDataloader():
